@@ -4,9 +4,9 @@ db = require('../data/connection.js')
 
 const router = express.Router()
 
-router.get("/", (req,res) => {
-    res.json({message: "hello from the server!! "})
-})
+// router.get("/", (req,res) => {
+//     res.json({message: "hello from the server!! "})
+// })
 
 router.get('/', (req, res) => {
     db('cars')
@@ -21,7 +21,7 @@ router.get('/', (req, res) => {
 
   router.post('/', (req, res) => {
     const carData = req.body;
-    db('fruits').insert(carData)
+    db('cars').insert(carData)
     .then(ids => {
       db('cars').where({ id: ids[0] })
       .then(newCarEntry => {
